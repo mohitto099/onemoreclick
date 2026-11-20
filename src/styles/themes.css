@@ -1,0 +1,326 @@
+/* ==========================================================================
+   ONE MORE CLICK — Theme Styles
+   ========================================================================== */
+
+/* --- Theme Transition --- */
+* {
+  transition: background-color var(--transition-base),
+              border-color var(--transition-base),
+              color var(--transition-base),
+              box-shadow var(--transition-base);
+}
+
+/* --- Default Theme (already in global.css) --- */
+
+/* --- Retro Arcade Theme --- */
+[data-theme="retro"] {
+  --color-bg-primary: #0d0d0d;
+  --color-bg-secondary: #1a1a1a;
+  --color-bg-tertiary: #252525;
+  --color-bg-elevated: #2d2d2d;
+
+  --color-button-primary: #00ff00;
+  --color-button-primary-hover: #33ff33;
+  --color-button-primary-active: #00cc00;
+  --color-button-secondary: #ffff00;
+  --color-button-secondary-hover: #ffff33;
+  --color-accent-cyan: #00ffff;
+  --color-accent-purple: #ff00ff;
+  --color-accent-green: #00ff00;
+  --color-accent-orange: #ff8800;
+
+  --color-text-primary: #00ff00;
+  --color-text-secondary: #88ff88;
+  --color-text-muted: #44aa44;
+  --color-text-inverse: #0d0d0d;
+
+  --color-border: #333333;
+  --color-border-bright: #444444;
+  --color-focus: #00ffff;
+
+  --font-display: 'VT323', 'Orbitron', monospace;
+  --font-sans: 'VT323', 'Courier New', monospace;
+  --font-mono: 'VT323', monospace;
+
+  --gradient-primary: linear-gradient(135deg, #00ff00 0%, #00cc00 100%);
+  --gradient-secondary: linear-gradient(135deg, #ffff00 0%, #cccc00 100%);
+  --gradient-cyan: linear-gradient(135deg, #00ffff 0%, #00cccc 100%);
+  --gradient-purple: linear-gradient(135deg, #ff00ff 0%, #cc00cc 100%);
+  --gradient-bg: repeating-linear-gradient(
+    0deg,
+    #0d0d0d,
+    #0d0d0d 2px,
+    #121212 2px,
+    #121212 4px
+  );
+  --gradient-button: linear-gradient(145deg, #00ff00 0%, #00cc00 50%, #00aa00 100%);
+  --gradient-rainbow: linear-gradient(90deg, #00ff00, #ffff00, #00ffff, #ff00ff, #00ff00);
+
+  --shadow-glow: 0 0 30px rgb(0 255 0 / 0.5);
+  --shadow-glow-cyan: 0 0 30px rgb(0 255 255 / 0.4);
+  --shadow-glow-purple: 0 0 30px rgb(255 0 255 / 0.4);
+}
+
+/* Retro scanline overlay */
+[data-theme="retro"]::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgb(0 0 0 / 0.1) 2px,
+    rgb(0 0 0 / 0.1) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+  animation: scanlines 0.1s linear infinite;
+}
+
+@keyframes scanlines {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 8px; }
+}
+
+/* --- Neon Theme --- */
+[data-theme="neon"] {
+  --color-bg-primary: #0a0a1a;
+  --color-bg-secondary: #14142a;
+  --color-bg-tertiary: #1e1e3a;
+  --color-bg-elevated: #282848;
+
+  --color-button-primary: #ff006e;
+  --color-button-primary-hover: #ff338a;
+  --color-button-primary-active: #cc0058;
+  --color-button-secondary: #00f3ff;
+  --color-button-secondary-hover: #33f5ff;
+  --color-accent-cyan: #00f3ff;
+  --color-accent-purple: #bc13fe;
+  --color-accent-green: #39ff14;
+  --color-accent-orange: #ffaa00;
+
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #b8b8d0;
+  --color-text-muted: #7a7a9a;
+  --color-text-inverse: #0a0a1a;
+
+  --color-border: #2a2a4a;
+  --color-border-bright: #3a3a5a;
+  --color-focus: #00f3ff;
+
+  --gradient-primary: linear-gradient(135deg, #ff006e 0%, #bc13fe 100%);
+  --gradient-secondary: linear-gradient(135deg, #00f3ff 0%, #00c2cc 100%);
+  --gradient-cyan: linear-gradient(135deg, #00f3ff 0%, #00c2cc 100%);
+  --gradient-purple: linear-gradient(135deg, #bc13fe 0%, #8a00c7 100%);
+  --gradient-bg: radial-gradient(ellipse at 50% 0%, #1a1a3a 0%, #0a0a1a 60%);
+  --gradient-button: linear-gradient(145deg, #ff006e 0%, #bc13fe 50%, #8a00c7 100%);
+  --gradient-rainbow: linear-gradient(90deg, #ff006e, #00f3ff, #bc13fe, #39ff14, #ff006e);
+
+  --shadow-glow: 0 0 40px rgb(255 0 110 / 0.5);
+  --shadow-glow-cyan: 0 0 40px rgb(0 243 255 / 0.4);
+  --shadow-glow-purple: 0 0 40px rgb(188 19 254 / 0.4);
+}
+
+/* Neon grid background */
+[data-theme="neon"]::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgb(255 0 110 / 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(0 243 255 / 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* --- Minimal Theme --- */
+[data-theme="minimal"] {
+  --color-bg-primary: #fafafa;
+  --color-bg-secondary: #f5f5f5;
+  --color-bg-tertiary: #eeeeee;
+  --color-bg-elevated: #ffffff;
+
+  --color-button-primary: #1a1a1a;
+  --color-button-primary-hover: #333333;
+  --color-button-primary-active: #000000;
+  --color-button-secondary: #e5e5e5;
+  --color-button-secondary-hover: #d4d4d4;
+  --color-button-danger: #dc2626;
+  --color-accent-cyan: #3b82f6;
+  --color-accent-purple: #8b5cf6;
+  --color-accent-green: #22c55e;
+  --color-accent-orange: #f97316;
+
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #525252;
+  --color-text-muted: #a3a3a3;
+  --color-text-inverse: #ffffff;
+
+  --color-border: #e5e5e5;
+  --color-border-bright: #d4d4d4;
+  --color-focus: #3b82f6;
+
+  --gradient-primary: none;
+  --gradient-secondary: none;
+  --gradient-cyan: none;
+  --gradient-purple: none;
+  --gradient-bg: none;
+  --gradient-button: none;
+  --gradient-rainbow: linear-gradient(90deg, #1a1a1a, #3b82f6, #8b5cf6, #22c55e, #1a1a1a);
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.07);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.07);
+  --shadow-glow: none;
+  --shadow-glow-cyan: none;
+  --shadow-glow-purple: none;
+}
+
+[data-theme="minimal"] .btn-primary {
+  background: var(--color-button-primary);
+  box-shadow: var(--shadow-md);
+}
+
+[data-theme="minimal"] .btn-primary:hover:not(:disabled) {
+  box-shadow: var(--shadow-lg);
+  background: var(--color-button-primary-hover);
+}
+
+[data-theme="minimal"] .card {
+  box-shadow: var(--shadow-sm);
+  border-color: var(--color-border);
+}
+
+[data-theme="minimal"] .card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* --- Chaos Theme --- */
+[data-theme="chaos"] {
+  --color-bg-primary: #0a0a0a;
+  --color-bg-secondary: #151515;
+  --color-bg-tertiary: #1f1f1f;
+  --color-bg-elevated: #2a2a2a;
+
+  --color-button-primary: #ff0000;
+  --color-button-primary-hover: #ff3333;
+  --color-button-primary-active: #cc0000;
+  --color-button-secondary: #00ffff;
+  --color-button-secondary-hover: #33ffff;
+  --color-accent-cyan: #00ffff;
+  --color-accent-purple: #ff00ff;
+  --color-accent-green: #00ff00;
+  --color-accent-orange: #ffaa00;
+
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #ffaa00;
+  --color-text-muted: #888888;
+  --color-text-inverse: #0a0a0a;
+
+  --color-border: #333333;
+  --color-border-bright: #444444;
+  --color-focus: #00ffff;
+
+  --gradient-primary: linear-gradient(135deg, #ff0000 0%, #ff00ff 100%);
+  --gradient-secondary: linear-gradient(135deg, #00ffff 0%, #00ff00 100%);
+  --gradient-cyan: linear-gradient(135deg, #00ffff 0%, #00cccc 100%);
+  --gradient-purple: linear-gradient(135deg, #ff00ff 0%, #cc00cc 100%);
+  --gradient-bg: repeating-conic-gradient(
+    from 0deg at 50% 50%,
+    #0a0a0a 0deg,
+    #0a0a0a 10deg,
+    #101010 10deg,
+    #101010 20deg
+  );
+  --gradient-button: var(--gradient-rainbow);
+  --gradient-rainbow: linear-gradient(90deg, #ff0000, #ffaa00, #00ff00, #00ffff, #ff00ff, #ff0000);
+
+  --shadow-glow: 0 0 40px rgb(255 0 0 / 0.6);
+  --shadow-glow-cyan: 0 0 40px rgb(0 255 255 / 0.5);
+  --shadow-glow-purple: 0 0 40px rgb(255 0 255 / 0.5);
+}
+
+[data-theme="chaos"] * {
+  animation: chaos-hue 10s linear infinite;
+}
+
+@keyframes chaos-hue {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+/* Exclude certain elements from chaos hue */
+[data-theme="chaos"] .btn,
+[data-theme="chaos"] .input,
+[data-theme="chaos"] .card,
+[data-theme="chaos"] .modal-content {
+  animation: none;
+}
+
+/* --- Theme Transition Class --- */
+.theme-transitioning * {
+  transition: background-color 0.5s ease,
+              border-color 0.5s ease,
+              color 0.5s ease,
+              box-shadow 0.5s ease !important;
+}
+
+/* --- Theme Toggle Button Styles --- */
+.theme-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: var(--color-bg-tertiary);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  width: 100%;
+}
+
+.theme-option:hover {
+  border-color: var(--color-border-bright);
+  background: var(--color-bg-elevated);
+}
+
+.theme-option.active {
+  border-color: var(--color-button-primary);
+  box-shadow: var(--shadow-md), var(--shadow-glow);
+}
+
+.theme-option-preview {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.theme-option-info {
+  flex: 1;
+  text-align: left;
+}
+
+.theme-option-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-lg);
+  color: var(--color-text-primary);
+}
+
+.theme-option-desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-1);
+}
+
+/* Theme preview backgrounds */
+.theme-preview-default { background: var(--gradient-bg); }
+.theme-preview-retro { background: #0d0d0d; background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgb(0 0 0 / 0.1) 2px, rgb(0 0 0 / 0.1) 4px); }
+.theme-preview-neon { background: #0a0a1a; background-image: linear-gradient(rgb(255 0 110 / 0.03) 1px, transparent 1px), linear-gradient(90deg, rgb(0 243 255 / 0.03) 1px, transparent 1px); background-size: 20px 20px; }
+.theme-preview-minimal { background: #fafafa; }
+.theme-preview-chaos { background: var(--gradient-rainbow); background-size: 200% 100%; animation: gradient-shift 2s linear infinite; }
